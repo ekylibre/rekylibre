@@ -25,8 +25,8 @@ services:
     ports:
       - "5433:5432"
     volumes:
-      - ./init_db.sql:/docker-entrypoint-initdb.d/postgis_extensions.sql
       - pg_data:/var/lib/postgresql/data
+      - ./init_db.sql:/docker-entrypoint-initdb.d/postgis_extensions.sql
     healthcheck:
       test: ["CMD-SHELL", "sh -c 'pg_isready -U ${POSTGRES_USER} -d ${DB_DEV_NAME}'"]
       interval: 2s

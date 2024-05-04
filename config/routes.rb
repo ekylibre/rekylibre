@@ -11,5 +11,7 @@ Rails.application.routes.draw do
     resources :comments
   end
 
+  resources :crops
+
   root "welcome#index"
 end

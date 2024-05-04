@@ -28,6 +28,12 @@ When no container running yet, start up a new one:
 docker compose run --rm web bin/rails c
 ```
 
+## Run a migration
+
+```
+docker compose run --rm web bin/rake db:migrate
+```
+
 ## Running tests
 
 ```

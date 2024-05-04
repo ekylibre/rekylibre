@@ -10,9 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_03_26_154219) do
+ActiveRecord::Schema[7.1].define(version: 2023_05_04_262211) do
+  create_schema "postgis"
+  create_schema "tiger"
+  create_schema "tiger_data"
+  create_schema "topology"
+
   # These are extensions that must be enabled in order to support this database
+  enable_extension "fuzzystrmatch"
+  enable_extension "pg_trgm"
+  enable_extension "pgcrypto"
   enable_extension "plpgsql"
+  enable_extension "postgis"
+  enable_extension "unaccent"
+  enable_extension "uuid-ossp"
 
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
@@ -65,6 +76,15 @@ ActiveRecord::Schema[7.1].define(version: 2023_03_26_154219) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["article_id"], name: "index_comments_on_article_id"
+  end
+
+  create_table "crops", force: :cascade do |t|
+    t.string "title"
+    t.text "content"
+    t.string "work_number"
+    t.geometry "shape", limit: {:srid=>4326, :type=>"geometry"}
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"

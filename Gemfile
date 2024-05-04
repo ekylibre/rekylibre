@@ -50,6 +50,11 @@ gem "image_processing", "~> 1.2"
 
 # Spatial
 gem 'activerecord-postgis-adapter'
+gem 'rgeo'
+gem 'rgeo-geojson'
+
+# view
+gem 'haml'
 
 group :development, :test do
   gem "brakeman"

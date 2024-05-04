@@ -1,0 +1,24 @@
+= form_with(model: crop) do |form|
+  - if crop.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(crop.errors.count, "error")
+        prohibited this article from being saved:
+      %ul
+        - crop.errors.each do |error|
+          %li= error.full_message
+  .field
+    = form.label :title
+    = form.text_field :title
+  .field
+    = form.label :number
+    = form.text_field :work_number
+  .field
+    = form.label :content
+    = form.rich_text_area :content
+
+  #map.leaflet-container{ style: 'min-height: 400px' }
+    %div{ "data-controller" => "map" }
+
+  .actions
+    = form.submit
