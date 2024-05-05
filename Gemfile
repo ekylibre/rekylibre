@@ -55,6 +55,8 @@ gem 'rgeo-geojson'
 
 # view
 gem 'haml'
+gem 'tailwindcss-rails'
+gem 'dartsass-rails'
 
 group :development, :test do
   gem "brakeman"
