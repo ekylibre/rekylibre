@@ -17,8 +17,13 @@
     = form.label :content
     = form.rich_text_area :content
 
-  #map.leaflet-container{ style: 'min-height: 400px' }
-    %div{ "data-controller" => "map" }
-
+  %div{"data-controller" => "map"}
+    .field{"data-map-target" => "output"}
+      = form.text_field :shape
+    .field{"data-map-target" => "shape", "data-map-shape-values" => crop.shape_to_json}
+      = 'test2'
+    #map
+      .leaflet-container{style: 'min-height: 400px'}
+      
   .actions
     = form.submit
